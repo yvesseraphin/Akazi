@@ -8,6 +8,16 @@ const satoshi = localFont({
   weight: "300 900",
   display: "swap",
   preload: true,
+  fallback: [
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Roboto",
+    "Helvetica Neue",
+    "Arial",
+    "sans-serif",
+  ],
+  adjustFontFallback: "Arial",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://akazi-germany.de";
@@ -100,46 +110,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={satoshi.variable} suppressHydrationWarning>
-      <head>
-        {process.env.NODE_ENV === "development" && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function() {
-                  try {
-                    var orig = Element.prototype.setAttribute;
-                    Element.prototype.setAttribute = function(k, v) {
-                      if (k === 'bis_skin_checked') return;
-                      return orig.apply(this, arguments);
-                    };
-                    var obs = new MutationObserver(function(muts) {
-                      for (var i = 0; i < muts.length; i++) {
-                        var m = muts[i];
-                        if (m.type === 'attributes' && m.attributeName === 'bis_skin_checked') {
-                          m.target.removeAttribute('bis_skin_checked');
-                        }
-                      }
-                    });
-                    obs.observe(document.documentElement, { attributes: true, subtree: true, attributeFilter: ['bis_skin_checked'] });
-                    window.addEventListener('load', function() {
-                      setTimeout(function() {
-                        obs.disconnect();
-                      }, 2000);
-                    });
-                  } catch (e) {}
-                })();
-              `,
-            }}
-          />
-        )}
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
         />
-      </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>
