@@ -7,7 +7,7 @@ interface HeroProps {
   bannerButtonText?: string;
   bannerButtonHref?: string;
   heading?: React.ReactNode;
-  subtitle?: string;
+  subtitle?: React.ReactNode;
   primaryButtonText?: string;
   primaryButtonHref?: string;
   secondaryButtonText?: string;
@@ -23,7 +23,13 @@ export const Hero = ({
       <span className={styles.headingLine}>Companies in Germany</span>
     </>
   ),
-  subtitle = "We connect German employers with vetted Rwandan apprentices for dual vocational training — with certified B2 German, visa support, and full mentorship.",
+  subtitle = (
+    <>
+      <span>We connect German employers with vetted Rwandan apprentices for dual vocational training,</span>
+      <br className={styles.lineBreak} />
+      <span>complete with certified B2 German, visa support, and full mentorship.</span>
+    </>
+  ),
   primaryButtonText = "Book Consultation",
   primaryButtonHref = "/start-hiring",
   secondaryButtonText = "Employer Webinar",
@@ -34,9 +40,9 @@ export const Hero = ({
       <aside className={styles.promoBar} aria-label="Announcement">
         <div className={styles.promoContainer} suppressHydrationWarning>
           <p className={styles.promoText}>
-            Learn how language preparation, visa processing,
-            <br className={styles.lineBreak} />{" "}
-            and relocation work.
+            <span>Learn how language preparation, visa processing,</span>
+            <br className={styles.lineBreak} />
+            <span>and relocation work.</span>
           </p>
           <Link href={bannerButtonHref} className={styles.promoButton}>
             {bannerButtonText}

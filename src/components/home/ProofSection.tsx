@@ -26,7 +26,7 @@ export const ProofSection = () => {
       if (totalScrollableDistance <= 0) return;
 
       const scrolled = headerHeight - rect.top;
-      const activeDistance = totalScrollableDistance * 0.82;
+      const activeDistance = totalScrollableDistance * 0.85;
 
       const rawProgress = scrolled / activeDistance;
       const currentProgress = Math.min(Math.max(rawProgress, 0), 1);
@@ -47,20 +47,27 @@ export const ProofSection = () => {
     };
   }, []);
 
+  const totalWords = words.length;
+  const span = 0.06;
+  const startOffset = 0.02;
+  const endLimit = 0.85;
+
   return (
     <section ref={containerRef} className={styles.sectionWrapper} aria-label="Commitment Statement">
       <div className={styles.stickyContainer}>
         <div className={styles.statementContainer}>
           <p className={styles.statementText}>
             {words.map((word, index) => {
-              const step = 1 / words.length;
-              const wordStart = index * step;
-              const wordEnd = wordStart + step * 1.8;
+              const wordStart =
+                totalWords > 1
+                  ? startOffset + (index / (totalWords - 1)) * (endLimit - span - startOffset)
+                  : startOffset;
+              const wordEnd = wordStart + span;
               const wordRatio = Math.min(
                 Math.max((progress - wordStart) / (wordEnd - wordStart), 0),
                 1
               );
-              const opacity = 0.16 + wordRatio * 0.84;
+              const opacity = 0.08 + wordRatio * 0.92;
 
               return (
                 <span

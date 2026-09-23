@@ -110,13 +110,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={satoshi.variable} suppressHydrationWarning>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(typeof window!=='undefined'&&typeof Node==='function'&&Node.prototype){const r=Node.prototype.removeChild;Node.prototype.removeChild=function(c){if(!c)return c;if(c.parentNode!==this){return c.parentNode?c.parentNode.removeChild(c):c;}return r.call(this,c);};const i=Node.prototype.insertBefore;Node.prototype.insertBefore=function(n,ref){if(ref&&ref.parentNode!==this){return ref.parentNode?ref.parentNode.insertBefore(n,ref):n;}return i.call(this,n,ref);};const o=new MutationObserver((m)=>{for(let j=0;j<m.length;j++){if(m[j].attributeName==='bis_skin_checked'){m[j].target.removeAttribute('bis_skin_checked');}}});o.observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:['bis_skin_checked']});}`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
         />
+      </head>
+      <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
       </body>
     </html>
