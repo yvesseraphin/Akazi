@@ -89,8 +89,9 @@
 
 .dropdownItem {
   display: block;
-  width: 100%;
-  padding: 8px 12px;
+  width: calc(100% + 32px);
+  margin-inline: -16px;
+  padding: 8px 28px;
   font-size: 15px;
   font-weight: 500;
   color: #0c162e;
@@ -104,4 +105,57 @@
 .dropdownItem:hover {
   background-color: #f8fafc;
   color: #0c162e;
+}
+
+@media (max-width: 900px) {
+  .dropdownContainer {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .triggerBtn {
+    width: 100%;
+    min-height: 58px;
+    justify-content: space-between;
+    padding: 16px 8px;
+  }
+
+  .chevron {
+    width: 16px;
+    height: 16px;
+    transform: rotate(-90deg);
+  }
+
+  .chevronRotated {
+    transform: rotate(0deg);
+  }
+
+  .menuFlyout {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 0;
+    animation: none;
+  }
+
+  .dropdownItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dropdownItem::after {
+    align-self: center;
+    flex: 0 0 8px;
+    width: 8px;
+    height: 8px;
+    border-top: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    content: "";
+    transform: rotate(45deg);
+  }
 }

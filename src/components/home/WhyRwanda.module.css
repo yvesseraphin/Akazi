@@ -123,7 +123,7 @@
 .cardImage {
   z-index: -2;
   object-fit: cover;
-  transition: transform 500ms ease, filter 500ms ease;
+  transition: none;
 }
 
 .cardShade {
@@ -131,7 +131,7 @@
   inset: 0;
   z-index: -1;
   background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, 0.8) 100%);
-  transition: background 350ms ease, backdrop-filter 350ms ease;
+  transition: background 350ms ease;
 }
 
 .cardContent {
@@ -184,14 +184,13 @@
 
 .card:hover .cardImage,
 .card:focus-within .cardImage {
-  filter: blur(4px);
-  transform: scale(1.04);
+  filter: none;
+  transform: none;
 }
 
 .card:hover .cardShade,
 .card:focus-within .cardShade {
   background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(2px);
 }
 
 .card:hover .cardTitle,
@@ -288,9 +287,19 @@
   }
 
   .sectionSubtitle {
-    font-size: 18px;
+    font-size: clamp(17px, 4vw, 20px);
     line-height: 1.4;
     gap: 6px;
+    width: 100%;
+    max-width: 38rem;
+    text-align: center;
+  }
+
+  .subtitleLongLine,
+  .subtitleShortLine {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
   }
 
   .cardGrid {
@@ -306,7 +315,33 @@
   }
 
   .cardContent {
-    padding: 24px;
+    padding: clamp(20px, 5vw, 28px);
+  }
+
+  .cardShade {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.38) 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+  }
+
+  .cardTitle {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.15;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  .cardDescription {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(15px, 4vw, 17px);
+    line-height: 1.5;
+    overflow-wrap: break-word;
   }
 
   .cardDescription {
@@ -314,13 +349,46 @@
     margin-top: 10px;
     opacity: 1;
     transform: none;
-    font-size: 15px;
-    line-height: 1.5;
   }
 
   .cardArrow {
-    right: 24px;
-    bottom: 24px;
+    display: none;
+  }
+
+  .card:hover .cardImage,
+  .card:focus-within .cardImage {
+    filter: none;
+    transform: none;
+  }
+
+  .card:hover .cardShade,
+  .card:focus-within .cardShade {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.38) 45%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+  }
+
+  .card:hover .cardContent,
+  .card:focus-within .cardContent {
+    justify-content: flex-end;
+  }
+
+  .card:hover .cardTitle,
+  .card:focus-within .cardTitle {
+    position: static;
+    opacity: 1;
+    transform: none;
+  }
+
+  .card:hover .cardDescription,
+  .card:focus-within .cardDescription {
+    max-height: 180px;
+    margin-top: 10px;
+    opacity: 1;
+    transform: none;
   }
 }
 
