@@ -91,48 +91,161 @@
   display: block;
 }
 
-.imageRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
   margin-top: 56px;
   width: 100%;
+  max-width: 1130px;
 }
 
-.imageWrapper {
-  width: 553px;
-  max-width: 100%;
+.card {
+  min-width: 0;
   height: 501px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: none;
-  flex-shrink: 0;
   position: relative;
-}
-
-.rowImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  overflow: hidden;
   border-radius: 20px;
-  border: none;
+  isolation: isolate;
+  background: #141414;
+  color: #ffffff;
 }
 
-@media (max-width: 1200px) {
-  .imageRow {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
+.imageFailed {
+  background: #141414;
+}
 
-  .imageWrapper {
-    width: 100%;
-    max-width: 553px;
-    height: auto;
-    aspect-ratio: 553 / 501;
-  }
+.wideCard {
+  grid-column: 1 / -1;
+  height: 420px;
+}
+
+.cardImage {
+  z-index: -2;
+  object-fit: cover;
+  transition: transform 500ms ease, filter 500ms ease;
+}
+
+.cardShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 38%, rgba(0, 0, 0, 0.8) 100%);
+  transition: background 350ms ease, backdrop-filter 350ms ease;
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.cardTitle {
+  max-width: 440px;
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(25px, 2.15vw, 32px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  transition: none;
+}
+
+.cardDescription {
+  max-width: 470px;
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: none;
+  transition: none;
+}
+
+.cardArrow {
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+  transition: none;
+}
+
+.card:hover .cardImage,
+.card:focus-within .cardImage {
+  filter: blur(4px);
+  transform: scale(1.04);
+}
+
+.card:hover .cardShade,
+.card:focus-within .cardShade {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.card:hover .cardTitle,
+.card:focus-within .cardTitle {
+  transform: none;
+}
+
+.card:hover .cardDescription,
+.card:focus-within .cardDescription {
+  max-height: 180px;
+  margin-top: 0;
+  opacity: 1;
+  transform: none;
+}
+
+.card:hover .cardContent,
+.card:focus-within .cardContent {
+  justify-content: center;
+}
+
+.card:hover .cardTitle,
+.card:focus-within .cardTitle {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  opacity: 0;
+}
+
+.card:hover .cardArrow,
+.card:focus-within .cardArrow {
+  opacity: 0;
+}
+
+.imageFailed .cardShade {
+  background: none;
+}
+
+.imageFailed .cardContent {
+  justify-content: center;
+}
+
+.imageFailed .cardTitle,
+.imageFailed:hover .cardTitle {
+  position: static;
+  opacity: 1;
+  transform: none;
+}
+
+.imageFailed .cardDescription,
+.imageFailed:hover .cardDescription {
+  max-height: 180px;
+  margin-top: 12px;
+  opacity: 1;
+  transform: none;
 }
 
 @media (max-width: 1024px) {
@@ -146,6 +259,15 @@
 
   .sectionSubtitle {
     font-size: 20px;
+  }
+
+  .card {
+    height: auto;
+    aspect-ratio: 1.1;
+  }
+
+  .wideCard {
+    aspect-ratio: 2.25;
   }
 }
 
@@ -171,15 +293,43 @@
     gap: 6px;
   }
 
-  .imageRow {
+  .cardGrid {
+    grid-template-columns: 1fr;
     margin-top: 36px;
     gap: 16px;
   }
 
-  .imageWrapper {
-    width: 100%;
-    max-width: 553px;
-    height: auto;
-    aspect-ratio: 553 / 501;
+  .card,
+  .wideCard {
+    grid-column: auto;
+    aspect-ratio: 1.1;
+  }
+
+  .cardContent {
+    padding: 24px;
+  }
+
+  .cardDescription {
+    max-height: 180px;
+    margin-top: 10px;
+    opacity: 1;
+    transform: none;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .cardArrow {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardImage,
+  .cardShade,
+  .cardTitle,
+  .cardDescription,
+  .cardArrow {
+    transition: none;
   }
 }
