@@ -2,15 +2,210 @@
   width: 100%;
   background-color: #ffffff;
   padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 130px;
   padding-inline: 40px;
   box-sizing: border-box;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.headerRow {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.cardGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  min-width: 0;
+  height: 339px;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 30px 26px 24px;
+  border-radius: 20px;
+  background-color: #f4f6fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category {
+  min-height: 40px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1.5px solid #17202d;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  color: #374151;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cardArrow {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.cardArrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cardArrow path {
+  stroke: #000000;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cardTitle {
+  margin: 40px 0 0;
+  color: #171d28;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  transition: color 160ms ease;
+}
+
+.card:hover .cardTitle {
+  color: #0052cc;
+}
+
+.cardBottom {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardNumber {
+  color: #0052cc;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 104px;
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  transform: translateY(24px);
+  clip-path: inset(0 0 30% 0);
+}
+
+.cardDescription {
+  max-width: 190px;
+  margin: 0 0 2px;
+  color: #374151;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: right;
+}
+
+.ticker {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-top: 130px;
+  transform: translateX(-50%);
+  overflow: hidden;
+}
+
+.tickerViewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 42s linear infinite;
+  will-change: transform;
+}
+
+.tickerGroup {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 36px;
+  padding-right: 36px;
+}
+
+.tickerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  color: #171d28;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(28px, 3vw, 52px);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tickerDot {
+  width: 28px;
+  height: 28px;
+  box-sizing: border-box;
+  border: 6px solid #dce5ff;
+  border-radius: 50%;
+  background: #3264ff;
+  flex-shrink: 0;
+}
+
+.tickerSlash {
+  font-weight: 400;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes tickerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.copy {
+  min-width: 0;
 }
 
 .sectionTitle {
@@ -21,7 +216,80 @@
   letter-spacing: -0.02em;
   color: #0c162e;
   margin: 0;
-  text-align: center;
+  text-align: left;
+}
+
+.sectionSubtitle {
+  max-width: 720px;
+  margin: 16px 0 0;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #4b5563;
+  text-align: left;
+}
+
+.exploreButton {
+  width: 180px;
+  height: 42px;
+  box-sizing: border-box;
+  padding: 0;
+  border: 2px solid #0c162e;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  color: #374151;
+  background: #ffffff;
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-top: 50px;
+}
+
+.exploreButton > span:first-child {
+  position: absolute;
+  left: calc((100% - 40px) / 2);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.exploreButton:focus-visible {
+  outline: 3px solid rgba(12, 22, 46, 0.3);
+  outline-offset: 3px;
+}
+
+.buttonArrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #101722;
+  color: #ffffff;
+  font-size: 0;
+  font-weight: 400;
+  transition: transform 180ms ease;
+}
+
+.buttonArrow::before {
+  content: "↗";
+  font-size: 20px;
+}
+
+.exploreButton:hover .buttonArrow {
+  transform: translate(3px, -3px) translateY(-50%);
 }
 
 @media (max-width: 1024px) {
@@ -33,12 +301,57 @@
 @media (max-width: 768px) {
   .sectionWrapper {
     padding-top: 48px;
-    padding-bottom: 48px;
+    padding-bottom: 130px;
     padding-inline: 16px;
   }
 
   .sectionTitle {
     font-size: 30px;
     line-height: 1.25;
+  }
+
+  .sectionSubtitle {
+    font-size: 17px;
+  }
+
+  .headerRow {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .exploreButton {
+    margin-top: 0;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cardTitle {
+    font-size: 28px;
+  }
+
+  .cardNumber {
+    font-size: 88px;
+    transform: translateY(20px);
+  }
+
+  .tickerGroup,
+  .tickerItem {
+    gap: 22px;
+  }
+
+  .tickerDot {
+    width: 18px;
+    height: 18px;
+    border-width: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation: none;
   }
 }

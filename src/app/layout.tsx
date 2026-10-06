@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Akazi Germany | Bilingual Apprentices from Rwanda for Companies in Germany",
+    default: "Akazi Germany Apprenticeship Talent for German Employers",
     template: "%s | Akazi Germany",
   },
   description: "We connect German employers with vetted Rwandan apprentices for dual vocational training (Ausbildung) — certified B2 German, visa support, and full mentorship.",
@@ -60,12 +60,12 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Akazi Germany",
-    title: "Akazi Germany | Bilingual Apprentices from Rwanda for Companies in Germany",
+    title: "Akazi Germany Apprenticeship Talent for German Employers",
     description: "We connect German employers with vetted Rwandan apprentices for dual vocational training (Ausbildung) — certified B2 German, visa support, and full mentorship.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akazi Germany | Bilingual Apprentices from Rwanda for Companies in Germany",
+    title: "Akazi Germany Apprenticeship Talent for German Employers",
     description: "We connect German employers with vetted Rwandan apprentices for dual vocational training (Ausbildung) — certified B2 German, visa support, and full mentorship.",
   },
   robots: {
