@@ -16,7 +16,7 @@ interface HeroProps {
 
 export const Hero = ({
   bannerButtonText = "Join Webinar",
-  bannerButtonHref = "/for-companies",
+  bannerButtonHref = "#webinar",
   heading = (
     <>
       <span className={styles.headingLine}>Bilingual Apprentices from Rwanda for</span>{" "}
@@ -31,9 +31,9 @@ export const Hero = ({
     </>
   ),
   primaryButtonText = "Book Consultation",
-  primaryButtonHref = "/start-hiring",
+  primaryButtonHref = "#consultation",
   secondaryButtonText = "Employer Webinar",
-  secondaryButtonHref = "/for-companies",
+  secondaryButtonHref = "#webinar",
 }: HeroProps) => {
   return (
     <div className={styles.heroWrapper} suppressHydrationWarning>

@@ -46,7 +46,7 @@ export const OurSolution = () => {
               Akazi Germany supports employers from candidate selection and B2 German preparation through visa coordination, arrival, and ongoing mentorship.
           </p>
         </div>
-        <Link href="/about" className={styles.exploreButton}>
+        <Link href="#how-it-works" className={styles.exploreButton}>
           <span>Learn more</span>
           <span className={styles.buttonArrow} aria-hidden="true">
             ↗

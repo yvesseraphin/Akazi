@@ -10,9 +10,9 @@ interface HeroActionsProps {
 
 export const HeroActions = ({
   primaryText = "Book Consultation",
-  primaryHref = "/start-hiring",
+  primaryHref = "#consultation",
   secondaryText = "Employer Webinar",
-  secondaryHref = "/for-companies",
+  secondaryHref = "#webinar",
 }: HeroActionsProps) => {
   return (
     <div className={styles.actionsContainer} suppressHydrationWarning>

@@ -47,7 +47,7 @@ const reasons = [
 
 export const WhyRwanda = () => {
   return (
-    <section className={styles.sectionWrapper} aria-labelledby="why-rwanda-heading">
+    <section id="why-rwanda" className={styles.sectionWrapper} aria-labelledby="why-rwanda-heading">
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <div className={styles.topBadge}>
